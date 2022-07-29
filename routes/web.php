@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
     return view('welcome');
 });*/
 Route::resource('/','App\Http\Controllers\TaskController');
+Route::post('/', 'App\Http\Controllers\TaskController@store')->name('crear');
