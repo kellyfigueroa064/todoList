@@ -56,11 +56,12 @@
                 <select
                     required
                     class="form-select"
-                    aria-label="Default select example"
-                >
+                    aria-label="Default select example" 
+                    id="user_id" 
+                    name="user_id"                >
                     <option hidden selected value="">Selecciona una opción</option>
                     @foreach (App\Models\User::get() as $user)
-                    <option value="{{$user->id}}" id="user_id" name="user_id">{{$user->name}}</option>
+                    <option value="{{$user->id}}">{{$user->name}}</option>
                     @endforeach
                 </select>
             </div>
@@ -98,7 +99,7 @@
                                     <tr>
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->descripcion }}</td>
-                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->users->name }}</td>
                                         <td class="action-column">
                                             <div class="form-check">
                                                 <input
@@ -117,7 +118,6 @@
                                         </td>
                                     </tr>
                                 @endforeach
-                                </tbody>
                             @else
                             <div style="text-align: center;" class="mt-5 mb-4">
                                 <?php echo 'No hay tareas creadas' ?>
@@ -129,6 +129,7 @@
                 </div>
             </div>
         </div><br>
+        {{$tasks->links()}}
         <script
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"

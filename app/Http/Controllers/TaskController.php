@@ -14,7 +14,7 @@ class TaskController extends Controller
      */
     public function index()
     {
-        $tasks = Task::all();
+        $tasks = Task::with(['users'])->paginate(10);
         return view('index')->with('tasks', $tasks);
     }
 
@@ -36,15 +36,17 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        $task = new Task;
+        $tasks = new Task;
 
-        $task->descripcion = $request->description;
-        $task->due_date = $request->dateform;
-        $task->user_id = $request->user_id;
+        $tasks->descripcion = $request->description;
+        $tasks->due_date = $request->dateform;
+        $tasks->user_id = $request->user_id;
 
-        $task->save();
+        $tasks->save();
 
-        return view('index');
+        $tasks = Task::with(['users'])->get();
+        $tasks = Task::paginate(10);
+        return view('index')->with('tasks', $tasks);
     }
 
     /**
