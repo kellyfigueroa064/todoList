@@ -74,9 +74,6 @@
                     </div>
                 </div>
             </div>
-
-            <!--  <input type="date" value="<?php echo date("m/d/Y") ?>" min="<?php echo date("Y-m-d") ?>"
-            max="2024-12-31"><br /> -->
         </form>
 
         <div class="content task-container">
@@ -102,19 +99,19 @@
                                         <td>{{ $item->users->name }}</td>
                                         <td class="action-column">
                                             <div class="form-check">
-                                                <input
-                                                    class="form-check-input"
-                                                    type="checkbox"
-                                                    value=""
-                                                    id="flexCheckDefault"
-                                                />
+                                            <?php if($item->estado == "1"){ ?>
+                                                <input class="form-check-input" value="" type="checkbox" id="flexCheckDefault" onClick="{{ route('cambiarEstado', $item->id) }}" checked/>
+                                                <?php }else{ ?>
+                                                    <input class="form-check-input" value="" type="checkbox" id="flexCheckDefault" onClick="{{ route('cambiarEstado', $item->id) }}"/>
+                                                <?php } ?>
                                             </div>
-                                            <button
-                                                type="button"
-                                                class="btn btn-danger custom"
-                                            >
-                                                Borrar
-                                            </button>
+                                            <form action="{{ route('borrar', $item->id) }}" method="POST" onsubmit="return confirm('¿Está seguro de que quiere eliminar esta tarea?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger custom">
+                                                    Borrar
+                                                </button>
+                                            </form>
                                         </td>
                                     </tr>
                                 @endforeach

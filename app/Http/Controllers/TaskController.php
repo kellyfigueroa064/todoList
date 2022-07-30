@@ -80,7 +80,19 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $task = Task::find($id);
+
+        dd($task);
+        $tasks->descripcion = $request->description;
+        $tasks->due_date = $request->dateform;
+        $tasks->user_id = $request->user_id;
+        
+
+        $tasks->save();
+
+        $tasks = Task::with(['users'])->get();
+        $tasks = Task::paginate(10);
+        return view('index')->with('tasks', $tasks);
     }
 
     /**
@@ -91,6 +103,12 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        $task->delete();
+
+        $tasks = Task::with(['users'])->get();
+        $tasks = Task::paginate(10);
+        return back()->with('tasks', $tasks);
+         
     }
 }

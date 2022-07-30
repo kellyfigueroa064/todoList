@@ -18,3 +18,5 @@ use Illuminate\Support\Facades\Route;
 });*/
 Route::resource('/','App\Http\Controllers\TaskController');
 Route::post('/', 'App\Http\Controllers\TaskController@store')->name('crear');
+Route::delete('/${id}', 'App\Http\Controllers\TaskController@destroy')->name('borrar');
+Route::put('/${id}', 'App\Http\Controllers\TaskController@update')->name('cambiarEstado');
