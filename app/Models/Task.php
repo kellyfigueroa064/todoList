@@ -11,7 +11,7 @@ class Task extends Model
     Protected $table = 'tasks';
     protected $primaryKey = 'id';
     protected $fillable = [
-        'descripcion', 'due_date','user_id',
+        'descripcion', 'due_date','user_id', 'estado',
     ];
     public function users()
     {

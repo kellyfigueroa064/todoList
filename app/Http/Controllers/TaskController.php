@@ -80,15 +80,15 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         $task = Task::find($id);
+        $alternarEstado = $task->estado;
+        //Alterno el estado
+        $alternarEstado = 1 - $alternarEstado;
+        //dd($alternarEstado);
 
-        dd($task);
-        $tasks->descripcion = $request->description;
-        $tasks->due_date = $request->dateform;
-        $tasks->user_id = $request->user_id;
-        
-
-        $tasks->save();
+        //$task->where('id',$request['id'])->update(['estado'=>$request['estado']]);
+        $task->update(['estado'=>$alternarEstado]);
 
         $tasks = Task::with(['users'])->get();
         $tasks = Task::paginate(10);
