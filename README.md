@@ -1,8 +1,8 @@
 ## Requisitos del proyecto
 
-- Contar con un entorno de desarrollo como [Laragon], Wampp o Xampp.(https://laragon.org/download/).
+- Contar con un entorno de desarrollo como [Laragon](https://laragon.org/download/)., Wampp o Xampp.
 - Tener instalado [Node.js](https://getcomposer.org/download/).
-- [Tener instalado [Composer] de manera global(https://laravel.com/docs/container).
+- [Tener instalado [Composer](https://laravel.com/docs/container). de manera global
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
