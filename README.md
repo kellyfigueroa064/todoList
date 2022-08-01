@@ -1,7 +1,5 @@
 ## Requisitos del proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
-
 - Contar con un entorno de desarrollo como [Laragon], Wampp o Xampp.(https://laragon.org/download/).
 - Tener instalado [Node.js](https://getcomposer.org/download/).
 - [Tener instalado [Composer] de manera global(https://laravel.com/docs/container).
