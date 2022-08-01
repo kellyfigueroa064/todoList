@@ -43,10 +43,7 @@ class TaskController extends Controller
         $tasks->user_id = $request->user_id;
 
         $tasks->save();
-
-        $tasks = Task::with(['users'])->get();
-        $tasks = Task::paginate(10);
-        return view('index')->with('tasks', $tasks);
+        return redirect('/');
     }
 
     /**
@@ -85,14 +82,9 @@ class TaskController extends Controller
         $alternarEstado = $task->estado;
         //Alterno el estado
         $alternarEstado = 1 - $alternarEstado;
-        //dd($alternarEstado);
 
-        //$task->where('id',$request['id'])->update(['estado'=>$request['estado']]);
         $task->update(['estado'=>$alternarEstado]);
-
-        $tasks = Task::with(['users'])->get();
-        $tasks = Task::paginate(10);
-        return view('index')->with('tasks', $tasks);
+        return redirect('/');
     }
 
     /**
@@ -105,10 +97,6 @@ class TaskController extends Controller
     {
         $task = Task::find($id);
         $task->delete();
-
-        $tasks = Task::with(['users'])->get();
-        $tasks = Task::paginate(10);
-        return back()->with('tasks', $tasks);
-         
+         return redirect('/');
     }
 }

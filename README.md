@@ -4,8 +4,6 @@
 - Tener instalado [Node.js](https://getcomposer.org/download/).
 - Tener instalado [Composer](https://laravel.com/docs/container). de manera global
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
-
 ## 1. Instalar dependencias con Composer
 
 Nos ubicamos en la carpeta raíz de nuestro proyecto Laravel, abrimos una terminal y escribimos el siguiente comando:
