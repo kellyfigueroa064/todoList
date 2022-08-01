@@ -2,7 +2,7 @@
 
 - Contar con un entorno de desarrollo como [Laragon](https://laragon.org/download/)., Wampp o Xampp.
 - Tener instalado [Node.js](https://getcomposer.org/download/).
-- [Tener instalado [Composer](https://laravel.com/docs/container). de manera global
+- Tener instalado [Composer](https://laravel.com/docs/container). de manera global
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -29,7 +29,7 @@ DB_DATABASE=todoapp
 DB_USERNAME=root
 DB_PASSWORD=
 
-### 3. Generamos una key nueva
+## 3. Generamos una key nueva
 
 Desde nuestra terminal escribimos el comando:
 
