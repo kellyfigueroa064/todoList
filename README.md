@@ -49,6 +49,14 @@ php artisan migrate
 
 con esto todas las tablas que necesita nuestra aplicación se generarán y agregarán a la base de datos.
 
+## 6. Agregamos los seed
+
+Con la finalidad de tener usuarios disponibles para realizar las pruebas en la aplicación, hicimos uso de los seeders de Laravel, para ello vamos a nuestra terminal y tecleamos la instrucción:
+
+php artisan db:seed
+
+De esta manera nuestra base de datos se llenará con toda la información que pusimos en los seed.
+
 ## Listo para probar el proyecto
 
 ¡Y listo! Ya pudimos clonar nuestro proyecto Laravel de manera fácil y rápida.
