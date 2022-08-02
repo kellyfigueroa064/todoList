@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Task;
+Use Session;
 
 class TaskController extends Controller
 {
@@ -13,8 +15,8 @@ class TaskController extends Controller
      */
     public function index()
     {
-        //
-        return view('index');
+        $tasks = Task::with(['users'])->paginate(10);
+        return view('index')->with('tasks', $tasks);
     }
 
     /**
@@ -35,7 +37,15 @@ class TaskController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tasks = new Task;
+
+        $tasks->descripcion = $request->description;
+        $tasks->due_date = $request->dateform;
+        $tasks->user_id = $request->user_id;
+
+        $tasks->save();
+        Session::flash('message','Tarea creada correctamente');
+        return redirect('/');
     }
 
     /**
@@ -69,7 +79,19 @@ class TaskController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $task = Task::find($id);
+        $alternarEstado = $task->estado;
+        //Alterno el estado
+        $alternarEstado = 1 - $alternarEstado;
+
+        $task->update(['estado'=>$alternarEstado]);
+        if($alternarEstado == 1){
+            Session::flash('message','Tarea completada');
+        }else{
+            Session::flash('message','Tarea desmarcada');
+        }
+        return redirect('/');
     }
 
     /**
@@ -80,6 +102,9 @@ class TaskController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $task = Task::find($id);
+        $task->delete();
+        Session::flash('message','Tarea borrada correctamente');
+         return redirect('/');
     }
 }
